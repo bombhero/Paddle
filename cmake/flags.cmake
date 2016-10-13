@@ -59,7 +59,7 @@ set(COMMON_FLAGS
     -fno-omit-frame-pointer
     -Wall
     -Wextra
-    -Werror
+#    -Werror
     -Wnon-virtual-dtor
     -Wdelete-non-virtual-dtor
     -Wno-unused-parameter

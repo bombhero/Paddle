@@ -13,9 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License. */
 
 
-
+#include <paddle/utils/TypeDefs.h>
 #include "SIMDFunctions.h"
-#include <immintrin.h>
+/* #include <immintrin.h> */
+#include "sse2neon.h"
 #include <algorithm>
 
 #ifndef __AVX__
