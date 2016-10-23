@@ -94,6 +94,7 @@ function(link_paddle_exe TARGET_NAME)
         paddle_gserver
         ${METRIC_LIBS}
         ARCHIVE_END
+        paddle_api
         paddle_pserver
         paddle_trainer_lib
         paddle_network
@@ -109,7 +110,7 @@ function(link_paddle_exe TARGET_NAME)
         ${ZLIB_LIBRARIES}
         ${INTERAL_LIBS}
         ${CMAKE_DL_LIBS})
-    
+
     if(WITH_PYTHON)
         target_link_libraries(${TARGET_NAME}
             ${PYTHON_LIBRARIES})
@@ -126,10 +127,10 @@ function(link_paddle_exe TARGET_NAME)
     endif()
 
     if(WITH_GPU)
-        if(NOT WITH_DSO OR WITH_METRIC) 
+        if(NOT WITH_DSO OR WITH_METRIC)
             target_link_libraries(${TARGET_NAME}
                 ${CUDNN_LIBRARY}
-                ${CUDA_curand_LIBRARY}) 
+                ${CUDA_curand_LIBRARY})
             CUDA_ADD_CUBLAS_TO_TARGET(${TARGET_NAME})
         endif()
 
