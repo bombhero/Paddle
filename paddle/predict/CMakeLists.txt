@@ -1,7 +1,8 @@
 # paddle predict package
 
 set(PREDICT_SOURCES
-	Prediction.cpp)
+	Prediction.cpp
+	PredictInit.cpp)
 
 set(PREDICT_HEADERS
 	Prediction.h)
@@ -14,11 +15,16 @@ add_style_check_target(paddle_predict_lib
 add_style_check_target(paddle_predict_lib
     ${PREDICT_HEADERS})
 add_dependencies(paddle_predict_lib
+    paddle_api
     gen_proto_cpp)
 
 macro(add_paddle_exe TARGET_NAME)
   add_executable(${TARGET_NAME} ${ARGN})
   add_style_check_target(${TARGET_NAME} ${ARGN})
+  target_link_libraries(${TARGET_NAME}
+            paddle_predict_lib)
+  target_link_libraries(${TARGET_Name}
+            paddle_api)
   link_paddle_exe(${TARGET_NAME})
 endmacro()
 

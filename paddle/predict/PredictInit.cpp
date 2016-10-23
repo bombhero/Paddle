@@ -12,16 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. */
 
-#include <iostream>
 #include "Prediction.h"
 
-using namespace paddle;  // NOLINT
+namespace paddle {
 
-int main(int argc, char** argv) {
-  Prediction* pPrediction = PredictionInit(argc, argv);
-  if (pPrediction != nullptr) {
-    return 0;
-  } else {
-    return -1;
-  }
+Prediction* PredictionInit(int argc, char** argv) {
+    Prediction* pPrediction = new Prediction();
+    return pPrediction;
 }
+
+}  // namespace paddle

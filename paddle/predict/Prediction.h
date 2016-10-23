@@ -1,4 +1,4 @@
-/* Copyright (c) 2016 Mark Zhang. All Rights Reserve.
+/* Copyright (c) 2016 Bomb Zhang<bomb.zhang@gmail.com>. All Rights Reserve.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,7 +18,9 @@ limitations under the License. */
 #include <string>
 #include "paddle/api/PaddleAPI.h"
 
-class Prediction{
+namespace paddle {
+
+class Prediction {
 public:
     Prediction();
     ~Prediction();
@@ -27,7 +29,14 @@ public:
     int LoadModelFromDir(std::string model_dir);
 
 private:
+    std::string ModelConfigFile;
+    std::string ModelParameterDir;
+
     GradientMachine* GMachine;
 };
+
+Prediction* PredictionInit(int argc, char** argv);
+
+}  // namespace paddle
 
 #endif  // PREDICTION_H__
